@@ -5,10 +5,11 @@ void testApp::setup(){
     ofEnableAlphaBlending();
     ofSetVerticalSync(true);
     ofEnableSmoothing();
+    ofSetFullscreen(true);
 
     //  Total dimensions of the Cubelibrary
     //
-    totalWith = 1000;
+    totalWidth = 1000;
     totalHeight = 1000;
     
     //  Prepare everything for the show
@@ -27,30 +28,30 @@ void testApp::makeScene(){
     //
     archiveBooks[0].x = 0;
     archiveBooks[0].y = totalHeight*0.8934;
-    archiveBooks[0].width = totalWith;
+    archiveBooks[0].width = totalWidth;
     archiveBooks[0].height = totalHeight*0.1066;
     archiveBooks[0].color = 1.0;
     archiveBooks[0].text = "A";
     
     archiveBooks[1].x = 0;
     archiveBooks[1].y = 0;
-    archiveBooks[1].width = totalWith;
+    archiveBooks[1].width = totalWidth;
     archiveBooks[1].height = totalHeight*0.8934;
     archiveBooks[1].color = 1.0;
     archiveBooks[1].text = "B";
     
-    archiveBooks[2].x = archiveBooks[1].getLeft()+totalWith*0.548;
+    archiveBooks[2].x = archiveBooks[1].getLeft()+totalWidth*0.548;
     archiveBooks[2].y = archiveBooks[1].getTop()+totalHeight*0.6434;
-    archiveBooks[2].width = totalWith*0.452;
+    archiveBooks[2].width = totalWidth*0.452;
     archiveBooks[2].height = totalHeight*0.25;
     archiveBooks[2].color = 1.0;
     archiveBooks[2].text = "C";
     
     //  Public books
     //
-    archiveBooks[3].x = archiveBooks[1].getLeft()+totalWith*0.849;
+    archiveBooks[3].x = archiveBooks[1].getLeft()+totalWidth*0.849;
     archiveBooks[3].y = archiveBooks[1].getTop()+totalHeight*0.7734;
-    archiveBooks[3].width = totalWith*0.151;
+    archiveBooks[3].width = totalWidth*0.151;
     archiveBooks[3].height = totalHeight*0.12;
     archiveBooks[3].color = 0.0;                    // we don't want to draw this section of the library.
                                                     // Actually just to draw a black box
@@ -164,9 +165,9 @@ void testApp::update(){
     }
 
     if (scale > 0.8 && !bZoomOut){
-        ofPoint center = ofPoint(totalWith*0.5,totalHeight*0.5);
+        ofPoint center = ofPoint(totalWidth*0.5,totalHeight*0.5);
         ofPoint diff = center - archiveBooks[3].getCenter();
-        diff.x -= totalWith*0.5;
+        diff.x -= totalWidth*0.5;
         translate.x = ofLerp(translate.x, diff.x, 0.01);   // Lerp is use to interpolate values gradualy
         translate.y = ofLerp(translate.y, diff.y, 0.01);   //
         
@@ -238,7 +239,7 @@ void testApp::draw(){
     
     //  center the blocks
     //
-    ofTranslate(-totalWith*0.5, -totalHeight*0.5);
+    ofTranslate(-totalWidth*0.5, -totalHeight*0.5);
     
     //  Camera pan
     //
@@ -263,6 +264,8 @@ void testApp::draw(){
     }
     ofPopStyle();
     glEnd();
+    
+    ofSaveScreen( ofToString(ofGetFrameNum(), 6, '0')+".png" );
     
     ofPopMatrix();
 }

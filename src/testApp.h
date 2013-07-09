@@ -30,7 +30,7 @@ public:
     vector<Particle>        publicBooks;
     vector<RectangleBooks>  categories;
     
-    float   totalWith, totalHeight;
+    float   totalWidth, totalHeight;
     float   publicBooksColor;
     
     //  Camera transitions

@@ -15,6 +15,7 @@ bin/.AppleDouble/
 bin/data/.AppleDouble/
 bin/libs/.AppleDouble/
 *.jpg
+*.png
 
 #XCode
 *.pbxuser
